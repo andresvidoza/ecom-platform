@@ -1,3 +1,6 @@
 {
-  "git.ignoreLimitWarning": true
+  "emmet.extensionsPath": "",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+ }
 }
