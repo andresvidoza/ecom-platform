@@ -1,0 +1,22 @@
+{
+  "name": "ecom-platform",
+  "version": "1.0.0",
+  "description": "MERN ecom app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresvidoza/ecom-platform.git"
+  },
+  "author": "Andres Vidoza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andresvidoza/ecom-platform/issues"
+  },
+  "homepage": "https://github.com/andresvidoza/ecom-platform#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
