@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
+import axios from 'axios'
 
 const ProductScreen = ({ match }) => {
+  const [product, setProduct] = useState({}) // its one product so itll be an empty object
 
-  //The find() method returns the value of the first element in the provided array that satisfies the provided testing function
-  const product = products.find( productElement => productElement._id === match.params.id ) // find the correct product in the JSON
+  // this will run as soon as the component loads  - Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Make axios request
+    const fetchProduct = async () => {
+      const res = await axios.get(`/api/products/${match.params.id}`) // only proceed once this is resolved (promise)
+
+      setProduct(res.data) // CHANGE STATE 
+    }
+
+    fetchProduct()
+  }, []) // if these variables change then the code inside fires off in the array
 
   return <>
     <Link className='btn btn-light my-3' to="/">
