@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Anti Coding Coding Club',
     image: '/images/accc.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Error',
     image: '/images/error.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Dev Better Everyday',
     image: '/images/dev.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Coding Nutrition Facts',
     image: '/images/nutrition.png',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'Hustle Haters Hiring',
     image: '/images/hhh.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: 'HTML div Element',
     image: '/images/div.jpg',
     description:
