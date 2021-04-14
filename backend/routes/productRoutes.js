@@ -10,8 +10,7 @@ import Product from '../models/productModel.js'
 router.get('/', asyncHandler(async (req, res) =>{
     // this wont handle errors, but we we would need to use try catch for ALL the routes. Instead we can use express-async-handler to do so
     const products = await Product.find({})
-
-    res.json(products);
+    res.json(products); 
 }))
 
 // @desc Fetch single product
