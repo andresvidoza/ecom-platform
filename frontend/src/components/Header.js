@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { Route } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useHistory } from "react-router-dom"; // ADDED LINE !!!!!!!!!!!!!!!!!!!!!!
+import SearchBox from '../components/SearchBox'
 import { Navbar, Nav, Container, NavDropdown, useAccordionToggle } from 'react-bootstrap'
 import { FaShoppingCart, FaUser } from "react-icons/fa"
 
@@ -33,7 +34,8 @@ const Header = () => {
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+            <Route render={({history}) => <SearchBox history={history}/>} />
+            <Nav className="ml-auto">
 
               <LinkContainer to="/cart">
                 <Nav.Link><FaShoppingCart /> Cart</Nav.Link>

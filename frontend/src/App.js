@@ -32,8 +32,6 @@ const App = () => {
         <Route path='/payment' component ={PaymentScreen}/>
         <Route path='/placeorder' component ={PlaceOrderScreen}/>
         <Route path='/order/:id' component ={OrderScreen}/>
-          {/* use exact to match exact route of / */}
-          <Route path='/' component ={HomeScreen} exact/>
           {/* :id is the placeholder expecting something */}
           <Route path='/product/:id' component ={ProductScreen}/>
           <Route path='/admin/productlist' component ={ProductListScreen}/>
@@ -43,6 +41,9 @@ const App = () => {
           <Route path='/admin/orderlist/' component ={OrderListScreen}/>
           {/* :id is the placeholder expecting something and the ? makes it optional because you wont always have an ID */}
           <Route path='/cart/:id?' component ={CartScreen}/>
+          <Route path='/search/:keyword' component ={HomeScreen}/>
+          {/* use exact to match exact route of / */}
+          <Route path='/' component ={HomeScreen} exact/>
         </Container>
       </main>
       <Footer />
