@@ -94,6 +94,37 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
     }
 }
 
+export const deliverOrder = (order) => async (dispatch, getState) => { // result coming from paypal
+    try {
+
+        dispatch({
+            type: 'ORDER_DELIVER_REQUEST',
+        })
+        // get user info
+        const {  userLogin: { userInfo } } = getState()
+
+        // pass the token
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.put(`/api/orders/${order._id}/deliver`, {}, config)
+
+        dispatch({
+            type: 'ORDER_DELIVER_SUCCESS',
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({ 
+            type: 'ORDER_DELIVER_FAIL',
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
 export const listMyOrders = () => async (dispatch, getState) => { // result coming from paypal
     try {
 
@@ -120,6 +151,37 @@ export const listMyOrders = () => async (dispatch, getState) => { // result comi
     } catch (error) {
         dispatch({ 
             type: 'ORDER_LIST_MY_FAIL',
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
+export const listOrders = () => async (dispatch, getState) => { // result coming from paypal
+    try {
+
+        dispatch({
+            type: 'ORDER_LIST_REQUEST',
+        })
+        // get user info
+        const {  userLogin: { userInfo } } = getState()
+
+        // pass the token
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.get(`/api/orders`, config)
+
+        dispatch({
+            type: 'ORDER_LIST_SUCCESS',
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({ 
+            type: 'ORDER_LIST_FAIL',
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
