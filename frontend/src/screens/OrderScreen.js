@@ -43,7 +43,7 @@ const OrderScreen = ( { match, history }) => {
         if(!userInfo){
             history.push('/login')
         }
-
+        
         const addPayPalScript = async () => {
             //fetch client id from backend
             const { data: clientId } = await axios.get('/api/config/paypal')

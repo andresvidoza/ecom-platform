@@ -11,6 +11,11 @@ const reviewSchema = mongoose.Schema({
     name: {type: String, required: true},
     rating: {type: Number, required: true},
     comment: {type: String, required: true},
+    user: {
+        type: mongoose.Schema.Types.ObjectId, // generate objectID
+        required: true,
+        ref: 'User', // adds relationship between the product and user 
+    },
 }, {
     timestamps: true // know where things are created 
 })
