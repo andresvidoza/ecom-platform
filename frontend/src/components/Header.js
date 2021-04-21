@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { LinkContainer } from 'react-router-bootstrap'
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import { useHistory } from "react-router-dom"; // ADDED LINE !!!!!!!!!!!!!!!!!!!!!!
+import { Navbar, Nav, Container, NavDropdown, useAccordionToggle } from 'react-bootstrap'
 import { FaShoppingCart, FaUser } from "react-icons/fa"
 
 import { logout } from '../actions/userActions'
@@ -10,12 +11,15 @@ import { logout } from '../actions/userActions'
 const Header = () => {
 
   const dispatch = useDispatch()
+  let history = useHistory(); // ADDED LINE !!!!!!!!!!!!!!!!!!!!!!
 
  const userLogin = useSelector(state => state.userLogin)
  const { userInfo } = userLogin
 
  const logoutHandler = () => {
    dispatch(logout());
+   // ADDED LINE !!!!!!!!!!!!!!!!!!!!!!
+   history.push('/login')
  }
  
   return (
@@ -45,6 +49,20 @@ const Header = () => {
               ): <LinkContainer to="/login">
               <Nav.Link><FaUser/> Sign in</Nav.Link>
             </LinkContainer>}
+
+            {userInfo && userInfo.isAdmin && 
+              <NavDropdown title='Admin' id="adminmenu">
+              <LinkContainer to='/admin/userlist'>
+                <NavDropdown.Item>Users</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='/admin/productlist'>
+                <NavDropdown.Item>Products</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='/admin/orderlist'>
+                <NavDropdown.Item>Orders</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+            }
 
             </Nav>
           </Navbar.Collapse>
