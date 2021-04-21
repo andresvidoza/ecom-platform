@@ -3,7 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 // If you are app does not interact with a server or use API call, you wouldn't need redux-thunk because you don't need async actions. Problems come when any server-side(REST API) is involved.
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { productListReducer, productDetailsReducer, productDeleteReducer, productCreateReducer, productUpdateReducer,productReviewCreateReducer } from './reducers/productReducers';
+import { productListReducer, productDetailsReducer, productDeleteReducer, productCreateReducer, productUpdateReducer,productReviewCreateReducer, productTopRatedReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducer'
 import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer, userDeleteReducer, userUpdateReducer } from './reducers/userReducers'
 import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer, orderListReducer, orderDeliverReducer } from './reducers/orderReducers'
@@ -29,6 +29,7 @@ const reducer = combineReducers({ // reducer is a function that takes the curren
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
     productReviewCreate: productReviewCreateReducer,
+    productTopRated: productTopRatedReducer,
 }) // allow multiple reducers to be used 
 
 // load from local storage

@@ -159,3 +159,21 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
         })
     }
 }
+
+export const listTopProducts = () => async (dispatch) => {
+    try{
+        dispatch({ type: 'PRODUCT_TOP_REQUEST'})
+        // Make axios request
+        const { data } = await axios.get(`/api/products/top`) // only proceed once this is resolved (promise)
+        
+        dispatch({ 
+            type: 'PRODUCT_TOP_SUCCESS',
+            payload: data,
+        })
+    }catch(error){
+        dispatch({ 
+            type: 'PRODUCT_TOP_FAIL',
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}

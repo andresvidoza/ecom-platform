@@ -5,6 +5,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { Row, Col } from 'react-bootstrap';
 import { listProducts } from '../actions/productActions';
+import ProductCarousel from '../components/ProductCarousel';
 
 // They let you use state and other React features without writing a class.
 
@@ -26,6 +27,7 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
+     {!keyword && <ProductCarousel />}
       <h1>Latest Products</h1>
       { loading ? <Loader /> : error ? <Message variant='danger'>{error} </Message> :
       <Row>
