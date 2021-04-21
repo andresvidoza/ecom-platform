@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = (keyword = '') => async (dispatch) => {
     try{
         dispatch({ type: 'PRODUCT_LIST_REQUEST'})
         // Make axios request
-        const { data } = await axios.get('/api/products') // only proceed once this is resolved (promise)
+        const { data } = await axios.get(`/api/products?keyword=${keyword}`) // only proceed once this is resolved (promise)
         
         dispatch({ 
             type: 'PRODUCT_LIST_SUCCESS',

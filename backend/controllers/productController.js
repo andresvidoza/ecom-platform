@@ -5,8 +5,16 @@ import Product from '../models/productModel.js'
 // @route GET /api/products
 // @access Public
 const getProducts = asyncHandler ( async (req, res) => {
+
+    const keyword = req.query.keyword ? {
+        name: {
+            $regex: req.query.keyword,
+            $options: 'i'
+        }
+    } : {}
+
     // this wont handle errors, but we we would need to use try catch for ALL the routes. Instead we can use express-async-handler to do so
-    const products = await Product.find({})
+    const products = await Product.find({ ...keyword })
     res.json(products); 
 })
 

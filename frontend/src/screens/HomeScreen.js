@@ -8,7 +8,9 @@ import { listProducts } from '../actions/productActions';
 
 // They let you use state and other React features without writing a class.
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+
+  const keyword = match.params.keyword
 
   // use dispatch for REDUX
   const dispatch = useDispatch();
@@ -19,8 +21,8 @@ const HomeScreen = () => {
   // this will run as soon as the component loads  - Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     // dispotch action
-    dispatch(listProducts());
-  }, [dispatch]); // if these variables change then the code inside fires off in the array
+    dispatch(listProducts(keyword));
+  }, [dispatch, keyword]); // if these variables change then the code inside fires off in the array
 
   return (
     <>
